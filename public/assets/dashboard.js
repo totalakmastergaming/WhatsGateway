@@ -902,24 +902,24 @@ const initQueueLivePolling = () => {
                     recentBody.innerHTML = data.messages.slice(0, 8).map(msg => {
                         let badge = '';
                         if (msg.status === 'sent') {
-                            badge = '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/70 shadow-subtle font-mono"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Sent</span>';
+                            badge = '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/70 font-mono"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Sent</span>';
                         } else if (msg.status === 'failed') {
-                            badge = '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-rose-50 text-rose-800 border border-rose-200/70 shadow-subtle font-mono"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Failed</span>';
+                            badge = '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200/70 font-mono"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Failed</span>';
                         } else if (msg.status === 'queued' || msg.status === 'processing') {
-                            badge = '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-50 text-amber-800 border border-amber-200/70 shadow-subtle font-mono"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Pending</span>';
+                            badge = '<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200/70 font-mono"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Pending</span>';
                         } else {
-                            badge = `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200/70 shadow-subtle font-mono"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> ${msg.status.charAt(0).toUpperCase() + msg.status.slice(1)}</span>`;
+                            badge = `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200/70 font-mono"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> ${msg.status.charAt(0).toUpperCase() + msg.status.slice(1)}</span>`;
                         }
                         const safeBody = (msg.body || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
                         const previewBody = safeBody.length > 48 ? safeBody.substring(0, 48) + '...' : safeBody;
                         const time = msg.created_at ? msg.created_at.substring(11, 19) : '';
 
                         return `<tr class="hover:bg-slate-50/70 transition-colors group cursor-default">
-                            <td class="px-5 py-2.5">${badge}</td>
-                            <td class="px-5 py-2.5"><div class="flex items-center gap-2"><span class="text-[9px] font-bold font-mono text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200/70">POST</span><span class="font-mono text-slate-700 text-[11px]">/api/send.php</span></div></td>
-                            <td class="px-5 py-2.5 text-slate-800 font-mono text-[12px] tabular-nums font-medium">${msg.recipient}</td>
-                            <td class="px-5 py-2.5 text-slate-600 hidden sm:table-cell font-normal truncate max-w-xs text-[12px]">${previewBody}</td>
-                            <td class="px-5 py-2.5 text-right text-slate-400 font-mono text-[11px] tabular-nums group-hover:text-slate-600 transition-colors">${time}</td>
+                            <td class="px-5 py-3.5">${badge}</td>
+                            <td class="px-5 py-3.5"><div class="flex items-center gap-2"><span class="text-xs font-semibold font-mono text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200/70">POST</span><span class="font-mono text-slate-700 text-xs">/api/send.php</span></div></td>
+                            <td class="px-5 py-3.5 text-slate-800 font-mono text-xs tabular-nums font-medium">${msg.recipient}</td>
+                            <td class="px-5 py-3.5 text-slate-600 hidden sm:table-cell font-normal truncate max-w-xs text-xs">${previewBody}</td>
+                            <td class="px-5 py-3.5 text-right text-slate-400 font-mono text-xs tabular-nums group-hover:text-slate-600 transition-colors">${time}</td>
                         </tr>`;
                     }).join('');
                 }

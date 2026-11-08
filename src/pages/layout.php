@@ -515,26 +515,20 @@ $isPersonalMode = ($agentMode === 'personal');
 
         <!-- Global Floating Emergency Escalation Banner (Hidden in Personal Assistant Mode) -->
         <?php if (!$isPersonalMode): ?>
-        <div id="globalEscalationBanner" class="hidden mx-4 sm:mx-6 mt-3 bg-gradient-to-r from-rose-600 via-rose-700 to-red-800 text-white rounded-xl p-3 px-4 shadow-xl border border-rose-500/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-in fade-in slide-in-from-top-2 duration-200 z-30 shrink-0">
+        <div id="globalEscalationBanner" class="hidden mx-4 sm:mx-6 mt-3 bg-white border border-rose-200 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 z-30 shrink-0">
             <div class="flex items-center gap-3 min-w-0">
-                <span class="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-xs flex items-center justify-center text-base shrink-0 animate-bounce">
-                    🚨
-                </span>
+                <span class="w-2 h-2 rounded-full bg-rose-500 shrink-0" aria-hidden="true"></span>
                 <div class="min-w-0">
-                    <div class="flex items-center gap-2">
-                        <span class="px-1.5 py-0.2 bg-white text-rose-700 text-[10px] font-black rounded uppercase tracking-wider">Urgent Escalation</span>
-                        <span id="globalEscalationCustomer" class="text-xs font-bold truncate">Customer</span>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="px-1.5 py-0.5 bg-rose-50 text-rose-700 text-xs font-semibold rounded border border-rose-200">Urgent escalation</span>
+                        <span id="globalEscalationCustomer" class="text-sm font-semibold text-slate-900 truncate">Customer</span>
                     </div>
-                    <p id="globalEscalationReason" class="text-[11px] text-rose-100 truncate mt-0.5">Customer requested human takeover. AI Bot paused.</p>
+                    <p id="globalEscalationReason" class="text-xs text-slate-500 mt-1">Customer requested human takeover. AI bot paused.</p>
                 </div>
             </div>
             <div class="flex items-center gap-2 shrink-0">
-                <a id="globalEscalationOpenChatBtn" href="<?= e(base_url('index.php?page=live-chat')) ?>" class="px-3 py-1.5 rounded-lg bg-white text-rose-700 hover:bg-rose-50 text-xs font-bold shadow-xs transition-all active:scale-[0.98]">
-                    Open Live Chat ➔
-                </a>
-                <button type="button" id="globalEscalationSilenceBtn" class="px-2.5 py-1.5 rounded-lg bg-rose-900/80 hover:bg-rose-950 text-white text-xs font-medium border border-rose-400/30 transition-all" title="Acknowledge and silence buzzer">
-                    🔕 Silence Alarm
-                </button>
+                <a id="globalEscalationOpenChatBtn" href="<?= e(base_url('index.php?page=live-chat')) ?>" class="inline-flex items-center h-11 px-3.5 rounded-md bg-rose-600 text-white hover:bg-rose-700 text-xs font-semibold transition-colors">Open Live Chat</a>
+                <button type="button" id="globalEscalationSilenceBtn" class="inline-flex items-center h-11 px-3.5 rounded-md bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold border border-slate-200 transition-colors" title="Acknowledge and silence buzzer">Silence alarm</button>
             </div>
         </div>
         <?php endif; ?>
